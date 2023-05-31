@@ -14,12 +14,12 @@ class Report::Create
 
       Report::Item.create(
         report_id:        report.id,
-        purchaser_name:   line[0],
-        item_description: line[1],
-        item_price:       line[2],
-        purchase_count:   line[3],
-        merchant_address: line [4],
-        merchant_name:    line[5]
+        purchaser_name:   line[0].to_s,
+        item_description: line[1].to_s,
+        item_price:       line[2].to_f,
+        purchase_count:   line[3].to_i,
+        merchant_address: line [4].to_s,
+        merchant_name:    line[5].to_s
       )
 
       purchase_count += line[3].to_i
