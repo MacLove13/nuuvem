@@ -1,0 +1,5 @@
+<li class="nav-item">
+  <a class="nav-link <%= request.path.eql?(page_path) ? 'active' : '' %>" href="<%= page_path %>">
+    <%= page_name %>
+  </a>
+</li>

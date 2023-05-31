@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    container_name: nuuvem_pg
+    image: postgres:11-alpine
+    ports:
+      - "5433:5433"
+    volumes:
+      - ./tmp/docker/pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  web: &web
+    container_name: nuuvem_web
+    build: .
+    volumes:
+      - .:/nuuvem
+    command: bash start_dev.sh
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    links:
+      - db
+    env_file:
+      - .env

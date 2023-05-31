@@ -1,0 +1,82 @@
+<div class="row dashboard">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				Reports
+			</div>
+			<div class="card-body">
+
+				<div class="card-group">
+					<div class="card" style="width: 18rem;">
+					  <div class="card-body">
+					    <h5 class="card-title">Reports Count</h5>
+					    <p class="card-text"><%= Report.where(user_id: current_user.id).count %></p>
+					  </div>
+					</div>
+
+					<div class="card" style="width: 18rem;">
+					  <div class="card-body">
+					    <h5 class="card-title">All-time gross income</h5>
+					    <p class="card-text"><%= @reports.sum(:total_price) %></p>
+					  </div>
+					</div>
+
+					<div class="card" style="width: 18rem;">
+					  <div class="card-body">
+					    <h5 class="card-title">All-time purchased items</h5>
+					    <p class="card-text"><%= @reports.sum(:purchase_count) %></p>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card mt-3">
+			<div class="card-header">
+				Gross income by day
+			</div>
+			<div class="card-body">
+				<%= line_chart @reports.group_by_day(:created_at).sum(:total_price) %>
+			</div>
+		</div>
+
+		<div class="card mt-3 mb-3">
+			<div class="card-header">
+				Reports
+			</div>
+			<div class="card-body">
+
+				<table class="table table-striped">
+				  <thead class="table-dark">
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Purchase Count</th>
+				      <th scope="col">Total Price</th>
+				      <th scope="col">Actions</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<% @reports_to_list.order(id: :DESC).each do |report| %>
+					    <tr>
+					      <th scope="row"><%= report.id %></th>
+					      <td>Report_<%= report.created_at.to_s.gsub(' UTC', '') %></td>
+					      <td><%= report.purchase_count %></td>
+					      <td><%= report.total_price %></td>
+					      <td>
+					      	<a href="/report/show/<%= report.id %>">
+					      		<i class="fa-solid fa-eye"></i>
+				      		</a>
+					      </td>
+					    </tr>
+				   	<% end %>
+				  </tbody>
+				</table>
+
+				<div class="d-flex justify-content-center">
+					<%= paginate @reports_to_list %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

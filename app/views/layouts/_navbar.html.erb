@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Nuuvem Test</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%= render partial: "layouts/navbar/item",
+        	locals: {
+        		page_name: 'Home',
+        		page_path: '/'
+        	}
+        %>
+
+        <% unless current_user.present? %>
+	        <%= render partial: "layouts/navbar/item",
+	        	locals: {
+	        		page_name: 'Sign in',
+	        		page_path: '/users/sign_in'
+	        	}
+	        %>
+        <% else %>
+        	<%= render partial: "layouts/navbar/item",
+	        	locals: {
+	        		page_name: 'Upload',
+	        		page_path: '/upload/new'
+	        	}
+	        %>
+
+	        <%= render partial: "layouts/navbar/item",
+	        	locals: {
+	        		page_name: 'Dashboard',
+	        		page_path: '/dashboard'
+	        	}
+	        %>
+	      </ul>
+      
+	      <div class="navbar-shortname">
+	      	<%= current_user.short_name.capitalize %>
+	      </div>
+
+	      <a
+	      	href="/users/sign_out"
+	      	class="logout-icon"
+	      	data-bs-toggle="tooltip"
+	      	data-bs-placement="bottom"
+	      	title="Sair"
+	      >
+	      	<i class="fa-solid fa-right-from-bracket"></i>
+	      </a>
+			<% end %>
+    </div>
+  </div>
+</nav>

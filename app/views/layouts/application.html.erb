@@ -7,9 +7,19 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+
+    <div class="container pt-5">
+      <% if flash.any? %>
+        <%= render "layouts/alerts" %>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,7 @@
+<div class="row">
+  <div class="col-md-12">
+    <% flash.each do |key, value| %>
+      <section class="alert alert-success <%= key %>"><%= value.html_safe %></section>
+    <% end %>
+  </div>
+</div>

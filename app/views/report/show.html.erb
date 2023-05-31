@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-md-12">
+		<a href="/dashboard" class="btn btn-secondary btn-sm">Back</a>
+		<div class="card mt-2">
+			<div class="card-header">
+				Report_<%= @report.created_at.to_s.gsub(' UTC', '') %> (ID: <%= @report.id %>)
+			</div>
+			<div class="card-body">
+				<table class="table table-striped">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col">Purchaser Name</th>
+							<th scope="col">Item Description</th>
+							<th scope="col">Item Price</th>
+							<th scope="col">Purchase Count</th>
+							<th scope="col">Merchante Address</th>
+							<th scope="col">Merchant Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @items.each do |item| %>
+							<tr>
+								<td><%= item.purchaser_name %></td>
+								<td><%= item.item_description %></td>
+								<td><%= item.item_price %></td>
+								<td><%= item.purchase_count %></td>
+								<td><%= item.merchant_address %></td>
+								<td><%= item.merchant_name %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
