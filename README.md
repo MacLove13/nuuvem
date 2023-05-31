@@ -3,7 +3,6 @@ This is the Nuuvem test, carried out by Felipe Moura Barbosa on 05/30/2023
 
 It consists of a web system for uploading files, normalizing data and storing them in a database.
 
---
 ## Setup
 
 ## Requirements
@@ -29,7 +28,6 @@ It consists of a web system for uploading files, normalizing data and storing th
 -- Client ID: `244447681242-9826i81qagk3jh6ujrumve008elar13m.apps.googleusercontent.com`
 -- Secret Key: `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`
 
---
 # DB Relationships
 
 ### User
@@ -54,7 +52,6 @@ You will have an overview of the data in a simple way on the Dashboard.
 ![Alt text](doc/dashboard2.png?raw=true "Dashboard")
 ![Alt text](doc/dashboard3.png?raw=true "Dashboard")
 
---
 # Libraries used
 - Devise
 - Omniauth-google-oauth2

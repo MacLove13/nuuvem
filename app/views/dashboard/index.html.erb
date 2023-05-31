@@ -10,21 +10,21 @@
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 					    <h5 class="card-title">Reports Count</h5>
-					    <p class="card-text"><%= Report.where(user_id: current_user.id).count %></p>
+					    <p id="reports-count" class="card-text"><%= Report.where(user_id: current_user.id).count %></p>
 					  </div>
 					</div>
 
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 					    <h5 class="card-title">All-time gross income</h5>
-					    <p class="card-text"><%= @reports.sum(:total_price) %></p>
+					    <p id="all-time-gross-income" class="card-text"><%= @reports.sum(:total_price) %></p>
 					  </div>
 					</div>
 
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 					    <h5 class="card-title">All-time purchased items</h5>
-					    <p class="card-text"><%= @reports.sum(:purchase_count) %></p>
+					    <p id="all-time-purchased-items" class="card-text"><%= @reports.sum(:purchase_count) %></p>
 					  </div>
 					</div>
 				</div>
